@@ -21,5 +21,8 @@ public class Lp01 {
 
 	@Column(name = "lp_date")
 	private Timestamp lpDate;
+	
+	@Column(name = "lp_time")
+	private Timestamp lpTime;
 
 }

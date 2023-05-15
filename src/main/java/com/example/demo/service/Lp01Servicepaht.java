@@ -1,39 +1,21 @@
 package com.example.demo.service;
 
-import java.io.Console;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-
 import com.example.demo.entity.Lp01;
-import com.example.demo.entity.employee;
 import com.example.demo.entity.employeedetail;
-import com.example.demo.model.lp01SearchModel;
 import com.example.demo.model.Lp02employeedetailModel;
 import com.example.demo.repository.core.CorePrimaryRepository;
-
-import com.example.demo.repository.core.Data;
-import com.example.demo.repository.core.GridData;
 import com.example.demo.repository.core.SqlParams;
 import com.example.demo.utils.CoreUtils;
 import com.example.demo.utils.Response;
-import com.google.gson.Gson;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Service
 public class Lp01Servicepaht {
 
 	@Autowired
 	private CorePrimaryRepository corePrimaryRepository;
-
-
-
 
 	public void reciverLPR(String plateNo){
 		
@@ -54,13 +36,10 @@ public class Lp01Servicepaht {
 	}
 
 
-
-
 	public List<Lp01> search(String keyword){
 		StringBuilder sql = new StringBuilder();
 		SqlParams params = SqlParams.create();
-		Map<String, Object> mo = null;
-		sql.append("	SELECT 		lc.lp_id 	,lc.lp_no	,lc.lp_date		");
+		sql.append("	SELECT 		lc.lp_id 	,lc.lp_no	,lc.lp_date		,lc.lp_time");
 		sql.append(" 	FROM		lpf_camera lc  							");
 		sql.append(" 	WHERE 		1=1										");
 
@@ -68,6 +47,7 @@ public class Lp01Servicepaht {
 			sql.append("	AND lc.lp_no like '%'|| :keyword || '%'			");
 			params.add("keyword", keyword);
 		}
+		sql.append(" 	order by lc.lp_date desc, lc.lp_time desc  		");
 
 	    List<Lp01> a = corePrimaryRepository.getDataList(sql.toString(),params,Lp01.class);
 		return a;
@@ -79,7 +59,6 @@ public class Lp01Servicepaht {
 	public List<employeedetail> searchEmp(String keyword){
 		StringBuilder sql = new StringBuilder();
 		SqlParams params = SqlParams.create();
-		Map<String, Object> mo = null;
 		sql.append("	select      e.emp_code, e.emp_name, e.emp_last_name, e.emp_phone, e.emp_job_title , c.car_licenseplate ,c.car_brand ,c.car_model ,c.car_color,c.cd_id	");
 		sql.append(" 	FROM		employee e inner join cardetail c on c.emp_code = e.emp_code						");
 		sql.append(" 	WHERE 		1=1										");
