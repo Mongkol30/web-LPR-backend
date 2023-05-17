@@ -30,7 +30,7 @@ public class Lp03Service {
 
 		if(CoreUtils.isNotEmpty(model.getStartDate())){
 			sql.append(" 	and  ( c.lp_date between :startDate::date and :endDate::date )	");
-			params.add("keyword", model.getLpNo());
+			
 		}
 		sql.append(" 	order by c.lp_date desc, c.lp_time desc  	");
 			
