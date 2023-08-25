@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class lp01SearchModel {
-    private String lpId;
+public class carSearchModel {
+    // private String lpId;
     @JsonProperty("licen_plates")
     private String lpNo;
     private Timestamp  lpDate;
