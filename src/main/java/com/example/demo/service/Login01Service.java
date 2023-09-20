@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.example.demo.model.LoginModel;
 import com.example.demo.repository.core.CorePrimaryRepository;
-import com.example.demo.repository.core.Data;
-import com.example.demo.repository.core.GridData;
 import com.example.demo.repository.core.SqlParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

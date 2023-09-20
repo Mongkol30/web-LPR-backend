@@ -2,8 +2,6 @@ package com.example.demo.Controller;
 
 import com.example.demo.model.ReprotModel;
 import com.example.demo.service.EmployeeService;
-import com.example.demo.service.ReportService;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
