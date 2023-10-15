@@ -24,6 +24,12 @@ public class LprController {
 		LprService.reciverLPR(plateNo);
 	}
 
+	@GetMapping("/lprout")
+	public void reciverLPRout(String plateNo) {
+		System.out.println(plateNo);
+		LprService.reciverLPRout(plateNo);
+	}
+
 	
 	@PostMapping("/search")
 	public List<carSearchModel>search(@RequestBody carSearchModel model) {
